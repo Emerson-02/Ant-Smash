@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5210068743529307813}
   - component: {fileID: 5060131902453288597}
   - component: {fileID: 5988845563484957845}
+  - component: {fileID: 1280303142449369649}
   m_Layer: 0
   m_Name: Enemy (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +50,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.15
+  sprites:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!61 &5060131902453288597
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -59,7 +63,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.03108871, y: 0.035871655}
@@ -95,6 +99,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1280303142449369649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2657946405452385491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2ece223f36cf146b70e7b6a0e4fa20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8447749650489728184
 GameObject:
   m_ObjectHideFlags: 0
