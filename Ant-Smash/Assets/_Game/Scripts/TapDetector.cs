@@ -41,6 +41,8 @@ public class TapDetector : MonoBehaviour
         {
             tapControl = true;
             hit.collider.gameObject.GetComponent<Enemy>().Dead();
+            hit.collider.gameObject.GetComponent<Enemy>().PlayAudio(tapControl);
+            hit.collider.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             Debug.Log(hit.transform.name);
         }
     }
