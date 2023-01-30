@@ -54,6 +54,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 0}
   - {fileID: 0}
+  score: 10
 --- !u!61 &5060131902453288597
 BoxCollider2D:
   m_ObjectHideFlags: 0
