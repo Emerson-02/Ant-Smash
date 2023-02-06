@@ -7,7 +7,7 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
 
-    public TMP_Text txtScore;
+    public TMP_Text txtScore, txtHighScore;
     public Image[] imageLifes;
     public GameObject panelGame, panelPause, panelMainMenu, allLifes;
     private GameController gameController;
@@ -20,6 +20,7 @@ public class UIController : MonoBehaviour
         panelMainMenu.gameObject.SetActive(true);
         panelGame.gameObject.SetActive(false);
         panelPause.gameObject.SetActive(false);
+        txtHighScore.text = "Highscore: " + gameController.highscore.ToString();
     }
 
     // Update is called once per frame

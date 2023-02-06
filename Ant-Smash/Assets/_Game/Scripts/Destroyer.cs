@@ -25,6 +25,7 @@ public class Destroyer : MonoBehaviour
             else 
             {
                 uiController.imageLifes[gameController.enemyCount - 1].gameObject.SetActive(false);
+                gameController.SaveScore();
                 Debug.Log("Game Over");
             }
             
