@@ -10,19 +10,34 @@ public class GameController : MonoBehaviour
     [HideInInspector] public int enemyCount;
     private UIController uiController;
     public Transform allEnemiesParent;
+    private Spawner spawner;
+
+    private void Awake() 
+    {
+        uiController = FindObjectOfType<UIController>();
+        spawner = FindObjectOfType<Spawner>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         totalScore = 0;
         enemyCount = 0;
-        uiController = FindObjectOfType<UIController>();
+        spawner.gameObject.GetComponent<Spawner>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void StartGame()
+    {
+        totalScore = 0;
+        enemyCount = 0;
+        uiController.txtScore.text = totalScore.ToString();
+        spawner.gameObject.GetComponent<Spawner>().enabled = true;
     }
 
     public void Restart()

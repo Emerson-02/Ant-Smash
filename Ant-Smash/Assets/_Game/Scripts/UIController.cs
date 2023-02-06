@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
 
     public TMP_Text txtScore;
     public Image[] imageLifes;
-    public GameObject panelGame, panelPause, allLifes;
+    public GameObject panelGame, panelPause, panelMainMenu, allLifes;
     private GameController gameController;
 
 
@@ -17,7 +17,8 @@ public class UIController : MonoBehaviour
     void Start()
     {
         gameController = FindObjectOfType<GameController>();
-        panelGame.gameObject.SetActive(true);
+        panelMainMenu.gameObject.SetActive(true);
+        panelGame.gameObject.SetActive(false);
         panelPause.gameObject.SetActive(false);
     }
 
@@ -30,6 +31,19 @@ public class UIController : MonoBehaviour
     public void UpdateScore(int score)
     {
         txtScore.text = score.ToString();
+    }
+
+    public void ButtonStartGame()
+    {
+        panelMainMenu.gameObject.SetActive(false);
+        panelGame.gameObject.SetActive(true);
+        gameController.StartGame();
+    }
+
+    public void ButtonExitGame()
+    {
+        AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+        activity.Call<bool>("moveTaskToBack", true);
     }
 
     public void ButtonPause()
