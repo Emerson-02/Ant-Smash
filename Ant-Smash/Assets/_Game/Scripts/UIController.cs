@@ -9,11 +9,14 @@ public class UIController : MonoBehaviour
 
     public TMP_Text txtScore;
     public Image[] imageLifes;
-    public GameObject panelGame, panelPause;
+    public GameObject panelGame, panelPause, allLifes;
+    private GameController gameController;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        gameController = FindObjectOfType<GameController>();
         panelGame.gameObject.SetActive(true);
         panelPause.gameObject.SetActive(false);
     }
@@ -41,6 +44,19 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1f;
         panelPause.gameObject.SetActive(false);
         panelGame.gameObject.SetActive(true);
+    }
+
+    public void ButtonRestart()
+    {
+        Time.timeScale = 1f;
+        panelPause.gameObject.SetActive(false);
+        panelGame.gameObject.SetActive(true);
+        gameController.Restart();
+
+        foreach (Transform child in allLifes.transform)
+        {
+            child.gameObject.SetActive(true); // ativa todas as vidas novamente
+        }
     }
 
     public void ButtonBackMainMenu()

@@ -8,11 +8,13 @@ public class Spawner : MonoBehaviour
     private float minX, maxX, nextSpawn;
     [SerializeField] private float minDistance, maxDistance, spawnTime;
     [SerializeField] private GameObject[] enemies;
+    private GameController gameController;
 
     // Start is called before the first frame update
     void Start()
     {
         nextSpawn = Time.time;
+        gameController = FindObjectOfType<GameController>();
         SetMinAndMaxX();
     }
 
@@ -34,7 +36,8 @@ public class Spawner : MonoBehaviour
         if(Time.time > nextSpawn)
         {
             Vector2 position = new Vector2(Random.Range(minX, maxX), transform.position.y);
-            Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector2(position.x, position.y), Quaternion.Euler(0f, 0f, 0));
+            GameObject tempEnemy = Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector2(position.x, position.y), Quaternion.Euler(0f, 0f, 0));
+            tempEnemy.transform.parent = gameController.allEnemiesParent;
             nextSpawn = Time.time + spawnTime;
         }
     }
