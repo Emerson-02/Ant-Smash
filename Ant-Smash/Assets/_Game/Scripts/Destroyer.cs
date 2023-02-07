@@ -16,20 +16,7 @@ public class Destroyer : MonoBehaviour
     {
         if(target.gameObject.CompareTag("Enemy"))
         {
-            gameController.enemyCount++;
-
-            if(gameController.enemyCount < 5)
-            {
-                uiController.imageLifes[gameController.enemyCount - 1].gameObject.SetActive(false);
-            }
-            else 
-            {
-                uiController.imageLifes[gameController.enemyCount - 1].gameObject.SetActive(false);
-                gameController.SaveScore();
-                Debug.Log("Game Over");
-            }
-            
-            Destroy(target.gameObject);
+            gameController.DestroyEnemy(target);
         }
 
         

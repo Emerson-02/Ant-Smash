@@ -5,12 +5,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    public float speed;
+    [SerializeField] private float speed;
     private Animator myAnimator;
     [SerializeField] private GameObject[] sprites;
     private GameController gameController;
     private UIController uiController;
-    public int score;
+    [SerializeField] private int score;
 
     // Start is called before the first frame update
     void Start()

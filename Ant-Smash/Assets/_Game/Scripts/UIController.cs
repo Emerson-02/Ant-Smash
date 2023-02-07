@@ -7,26 +7,27 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
 
-    public TMP_Text txtScore, txtHighScore;
+    public TMP_Text txtScore, txtHighScore, txtFinalScore;
     public Image[] imageLifes;
-    public GameObject panelGame, panelPause, panelMainMenu, allLifes;
+    [SerializeField] private GameObject panelGame, panelPause, panelMainMenu, allLifes;
+    public GameObject panelGameOver;
     private GameController gameController;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        Initialize();
+    }
+
+    public void Initialize()
+    {
         gameController = FindObjectOfType<GameController>();
         panelMainMenu.gameObject.SetActive(true);
         panelGame.gameObject.SetActive(false);
         panelPause.gameObject.SetActive(false);
+        panelGameOver.gameObject.SetActive(false);
         txtHighScore.text = "Highscore: " + gameController.highscore.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void UpdateScore(int score)
@@ -64,8 +65,9 @@ public class UIController : MonoBehaviour
     public void ButtonRestart()
     {
         Time.timeScale = 1f;
-        panelPause.gameObject.SetActive(false);
         panelGame.gameObject.SetActive(true);
+        panelPause.gameObject.SetActive(false);
+        panelGameOver.gameObject.SetActive(false);
         gameController.Restart();
 
         foreach (Transform child in allLifes.transform)
@@ -77,7 +79,10 @@ public class UIController : MonoBehaviour
     public void ButtonBackMainMenu()
     {
         Time.timeScale = 1f;
+        panelMainMenu.gameObject.SetActive(true);
         panelPause.gameObject.SetActive(false);
         panelGame.gameObject.SetActive(false);
+        panelGameOver.gameObject.SetActive(false);
+        gameController.BackMainMenu();
     }
 }
